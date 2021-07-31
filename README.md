@@ -15,14 +15,14 @@ This tutorial uses the following tools
 ## Create React Frontend
 
 * init react app
-
+```
+npx create-react-app react-dapp
+```
 ```
 npm install
 ```
 
-```
-npm start
-```
+
 
 ```
 npm install hardhat --save-dev
@@ -37,6 +37,10 @@ npx hardhat compile
 
 ```
 npx hardhat run scripts/deploy.js --network rinkeby
+```
+
+```
+npm start
 ```
 
 * create elements, buttons and inputs
