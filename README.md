@@ -24,6 +24,21 @@ npm install
 npm start
 ```
 
+```
+npm install hardhat --save-dev
+```
+```
+npm install @nomiclabs/hardhat-waffle
+```
+
+```
+npx hardhat compile
+```
+
+```
+npx hardhat run scripts/deploy.js --network rinkeby
+```
+
 * create elements, buttons and inputs
 * sign in button
 
