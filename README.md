@@ -28,7 +28,7 @@ npm start
 npm install hardhat --save-dev
 ```
 ```
-npm install @nomiclabs/hardhat-waffle
+npm install --save-dev "@nomiclabs/hardhat-ethers@^2.0.0" "ethereum-waffle@^3.2.0"
 ```
 
 ```
