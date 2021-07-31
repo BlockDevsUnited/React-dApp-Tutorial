@@ -15,6 +15,15 @@ This tutorial uses the following tools
 ## Create React Frontend
 
 * init react app
+
+```
+npm install
+```
+
+```
+npm start
+```
+
 * create elements, buttons and inputs
 * sign in button
 
