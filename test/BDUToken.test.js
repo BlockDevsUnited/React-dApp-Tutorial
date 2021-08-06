@@ -1,26 +1,26 @@
-/* global artifacts, contract, assert*/
-const { BN } = require("@openzeppelin/test-helpers");
+/* global ethers*/
+/* eslint-disable jest/valid-expect */
+const { expect } = require('chai');
+const { BigNumber } = ethers;
 
-const BDUToken = artifacts.require("BDUToken");
+describe('BDUToken', () => {
+  const name = 'BlockDevsUnited';
+  const symbol = 'BDU';
+  const supply = BigNumber.from(2100000000);
 
-contract("BDUToken", ([owner]) => {
-  const name = "BlockDevsUnited";
-  const symbol = "BDU";
-  const supply = new BN(2100000000);
-
-  it("creates correct contract", async () => {
-    const bduToken = await BDUToken.deployed();
+  it('creates correct contract', async () => {
+    const [owner] = await ethers.getSigners();
+    const { address } = owner;
+    const BDUToken = await ethers.getContractFactory('BDUToken');
+    const bduToken = await BDUToken.deploy();
+    await bduToken.deployed();
     const tokenName = await bduToken.name();
     const tokenSymbol = await bduToken.symbol();
     const tokenSupply = await bduToken.totalSupply();
-    const ownerInitialBalance = await bduToken.balanceOf(owner);
-    assert.equal(name, tokenName, "Incorrect token name");
-    assert.equal(symbol, tokenSymbol, "Incorrect token symbol");
-    assert.equal(supply.eq(tokenSupply), true, "Incorrect initial supply");
-    assert.equal(
-      supply.eq(ownerInitialBalance),
-      true,
-      "Incorrect owner initial balance"
-    );
+    const ownerInitialBalance = await bduToken.balanceOf(address);
+    expect(name).to.equal(tokenName);
+    expect(symbol).to.equal(tokenSymbol);
+    expect(supply.eq(tokenSupply)).to.equal(true);
+    expect(supply.eq(ownerInitialBalance)).to.equal(true);
   });
 });
